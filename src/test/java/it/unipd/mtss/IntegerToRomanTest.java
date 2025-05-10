@@ -36,8 +36,8 @@ public class IntegerToRomanTest {
 
     @Test
     public void testConvertUpperBoundary() {
-        // Test the largest number currently supported (10)
-        assertEquals("X", IntegerToRoman.convert(10));
+        // Test the largest number currently supported (100)
+        assertEquals("C", IntegerToRoman.convert(100));
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -102,4 +102,86 @@ public class IntegerToRomanTest {
     public void testConvertTen() {
         assertEquals("X", IntegerToRoman.convert(10));
     }
+// test per arrivare fino a 100 a passi di 5
+    @Test 
+    public void testConvertFifteen() {
+        assertEquals("XV", IntegerToRoman.convert(15));
+    }
+
+    @Test   
+    public void testConvertTwenty() {
+        assertEquals("XX", IntegerToRoman.convert(20));
+    }
+
+    @Test
+    public void testConvertTwentyFive() {
+        assertEquals("XXV", IntegerToRoman.convert(25));
+    }
+
+    @Test
+    public void testConvertThirtyThree() {
+        assertEquals("XXXIII", IntegerToRoman.convert(33));
+    }
+
+    @Test
+    public void testConvertThirtyFive() {
+        assertEquals("XXXV", IntegerToRoman.convert(35));
+    }
+
+    @Test 
+    public void testConvertThirtyEight() {
+        assertEquals("XXXVIII", IntegerToRoman.convert(38));
+    }
+
+    @Test
+    public void testConvertForty() {
+        assertEquals("XL", IntegerToRoman.convert(40));
+    }
+
+    @Test
+    public void testConvertFortyFive() {
+        assertEquals("XLV", IntegerToRoman.convert(45));
+    }
+
+    @Test
+    public void testConvertFifty() {
+        assertEquals("L", IntegerToRoman.convert(50));
+    }
+
+    @Test
+    public void testConvertFiftyFive() {
+        assertEquals("LV", IntegerToRoman.convert(55));
+    }
+
+    @Test
+    public void testConvertSixty() {
+        assertEquals("LX", IntegerToRoman.convert(60));
+    }
+
+    // adesso a passi di 4
+    @Test
+    public void testConvertSixtyFour() {
+        assertEquals("LXIV", IntegerToRoman.convert(64));
+    }
+
+    @Test
+    public void testConvertSixtyEight() {
+        assertEquals("LXVIII", IntegerToRoman.convert(68));
+    }
+
+    @Test
+    public void testConvertSeventySeven() {
+        assertEquals("LXXVII", IntegerToRoman.convert(77));
+    }
+
+    @Test
+    public void testConvertEighty() {
+        assertEquals("LXXX", IntegerToRoman.convert(80));
+    }
+
+    @Test
+    public void testConvertEightyOne() {
+        assertEquals("LXXXI", IntegerToRoman.convert(81));
+    }
+    
 }
