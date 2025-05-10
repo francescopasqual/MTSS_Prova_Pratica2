@@ -1,5 +1,7 @@
 # MTSS_Prova_Pratica2
 
+[![Coverage Status](https://coveralls.io/repos/github/francescopasqual/MTSS_Prova_Pratica2/badge.svg?branch=main)](https://coveralls.io/github/francescopasqual/MTSS_Prova_Pratica2?branch=main)
+
 
 [INFO] Scanning for projects...
 [INFO] 
