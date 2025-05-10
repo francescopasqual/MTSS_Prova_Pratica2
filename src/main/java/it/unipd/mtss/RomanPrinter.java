@@ -47,6 +47,24 @@ public class RomanPrinter {
                     lines[4] += " / . \\ ";
                     lines[5] += "/_/ \\_\\";
                     break;
+
+                case 'L':
+                    lines[0] += "  _      ";
+                    lines[1] += " | |     ";
+                    lines[2] += " | |     ";
+                    lines[3] += " | |     ";
+                    lines[4] += " | |____ ";
+                    lines[5] += " |______|";
+                    break;
+
+                case 'C':
+                    lines[0] += "   _____ ";
+                    lines[1] += "  / ____|";
+                    lines[2] += " | |     ";
+                    lines[3] += " | |     ";
+                    lines[4] += " | |____ ";
+                    lines[5] += "  \\_____|";
+                    break;
                 default:
                     throw new IllegalArgumentException("Unsupported Roman numeral: " + c);
             }
