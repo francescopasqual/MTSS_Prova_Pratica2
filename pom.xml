@@ -6,7 +6,6 @@
   <artifactId>roman-number</artifactId>
   <version>1.0</version>
   <name>roman-number</name>
-  <!-- FIXME change it to the project's website -->
   <url>https://github.com/francescopasqual/MTSS_Prova_Pratica2</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -74,61 +73,85 @@
             <configLocation>checkstyle.xml</configLocation>
             <consoleOutput>true</consoleOutput>
           </configuration>
-          <executions>
-            <execution>
-              <phase>verify</phase>
-              <goals>
-                <goal>checkstyle</goal>
-              </goals>
-            </execution>
-          </executions>
         </plugin>
         <plugin>
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
           <version>0.8.11</version>
-          <executions>
-            <execution>
-              <id>prepare-agent</id>
-              <goals>
-                <goal>prepare-agent</goal>
-              </goals>
-            </execution>
-            <execution>
-              <id>default-report</id>
-              <phase>verify</phase>
-              <goals>
-                <goal>report</goal>
-              </goals>
-            </execution>
-            <execution>
-              <id>check</id>
-              <goals>
-                <goal>check</goal>
-              </goals>
-              <configuration>
-                <rules>
-                  <rule>
-                    <element>PACKAGE</element>
-                    <limits>
-                      <limit>
-                        <counter>LINE</counter>
-                        <value>COVEREDRATIO</value>
-                        <minimum>0.85</minimum>
-                      </limit>
-                    </limits>
-                  </rule>
-                </rules>
-              </configuration>
-            </execution>
-          </executions>
         </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
+      <!-- Esecuzione effettiva del plugin Checkstyle -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>verify</phase>
+            <goals>
+              <goal>checkstyle</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      
+      <!-- Esecuzione effettiva del plugin JaCoCo -->
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.11</version>
+        <executions>
+          <!-- Attiva JaCoCo prima dei test -->
+          <execution>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <!-- Genera il report dopo i test -->
+          <execution>
+            <id>report</id>
+            <phase>test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+          <!-- Verifica che almeno l'85% delle linee siano coperte -->
+          <execution>
+            <id>check-coverage</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>check</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <rule>
+                  <element>BUNDLE</element>
+                  <limits>
+                    <limit>
+                      <counter>LINE</counter>
+                      <value>COVEREDRATIO</value>
+                      <minimum>0.85</minimum> <!-- 85% minimo -->
+                    </limit>
+                  </limits>
+                </rule>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Plugin per eseguire code coverage coveralls-->
+      <plugin>
+        <groupId>org.eluder.coveralls</groupId>
+        <artifactId>coveralls-maven-plugin</artifactId>
+        <version>4.3.0</version>
+        <configuration>
+          <repoToken>${env.COVERALLS_REPO_TOKEN}</repoToken>
+          <jacocoReports>
+            <jacocoReport>target/site/jacoco/jacoco.xml</jacocoReport>
+          </jacocoReports>
+        </configuration>
       </plugin>
     </plugins>
   </build>
