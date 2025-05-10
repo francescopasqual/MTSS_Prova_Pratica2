@@ -9,17 +9,16 @@ public class IntegerToRoman {
     private static final String[] symbols = {"X", "IX", "V", "IV", "I"};
     
     public static String convert(int number) {
-    if (number <= 0) {
-        throw new IllegalArgumentException("Number must be greater than 0");
-    }
-
-    StringBuilder roman = new StringBuilder();
-    for (int i = 0; i < values.length && number >= 0; i++) {
-        while (values[i] <= number) {
-            number -= values[i];
-            roman.append(symbols[i]);
+        if (number <= 0 || number > 10) {
+            throw new IllegalArgumentException("Number must be between 1 and 10");
         }
-    }
-    return roman.toString();
+        StringBuilder roman = new StringBuilder();
+        for (int i = 0; i < values.length && number >= 0; i++) {
+            while (values[i] <= number) {
+                number -= values[i];
+                roman.append(symbols[i]);
+            }
+        }
+        return roman.toString();
     }
 }
