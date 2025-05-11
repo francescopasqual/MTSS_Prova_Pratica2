@@ -5,8 +5,8 @@
 package it.unipd.mtss;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
 import org.junit.Test;
 
 /**
@@ -183,5 +183,49 @@ public class IntegerToRomanTest {
     public void testConvertEightyOne() {
         assertEquals("LXXXI", IntegerToRoman.convert(81));
     }
-    
+
+
+    // Test parametrizzato per numeri da 100 a 1000
+    @Test
+    public void testConvertHundredsToThousand() {
+        // Array di test cases con input e output atteso
+        Object[][] testCases = {
+            {100, "C"},
+            {200, "CC"},
+            {300, "CCC"},
+            {400, "CD"},
+            {500, "D"},
+            {600, "DC"},
+            {700, "DCC"},
+            {800, "DCCC"},
+            {900, "CM"},
+            {1000, "M"}
+        };
+        
+        // Test dei casi principali
+        for (Object[] testCase : testCases) {
+            int input = (int) testCase[0];
+            String expected = (String) testCase[1];
+            assertEquals(expected, IntegerToRoman.convert(input));
+        }
+
+        // Test sistematico ogni 50 numeri
+        for (int i = 100; i < 1000; i += 50) {
+            String result = IntegerToRoman.convert(i);
+            // Verifica che il risultato non sia vuoto
+            assertTrue("Conversion failed for " + i, result != null && !result.isEmpty());
+        }
+
+        // Test specifici per casi particolari
+        assertEquals("CDXLIV", IntegerToRoman.convert(444));
+        assertEquals("CDXCIX", IntegerToRoman.convert(499));
+        assertEquals("DCXCIX", IntegerToRoman.convert(699));
+        assertEquals("CMXCIX", IntegerToRoman.convert(999));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testConvertAboveThousand() {
+        IntegerToRoman.convert(1001);
+    }
 }
+
