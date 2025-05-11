@@ -9,22 +9,6 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import org.junit.Test;
 
-/**
- * Test class for IntegerToRoman conversion.
- * Tests follow A-TRIP principles:
- * - Automatic: Can be run without manual intervention
- * - Thorough: Tests all possible scenarios
- * - Repeatable: Consistent results on each run
- * - Independent: Each test works on its own
- * - Professional: Well-structured and documented
- *
- * And BICEP principles:
- * - Boundary conditions: Tests boundary values
- * - Inverse relationships: Tests relationships between input and output
- * - Cross-check: Verifies results using alternate means
- * - Error conditions: Tests error handling
- * - Performance: Considers efficiency (where relevant)
- */
 public class IntegerToRomanTest {
 
     // Boundary condition tests

@@ -6,32 +6,7 @@ package it.unipd.mtss;
 
 import org.junit.Test;
 import org.junit.Before;
-
-/**
- * A-TRIP Test
- * (Automatic): ok
- * (Thorough): ok
- * (Repeatable): ok
- * (Independent): ok
- * (Professional): ok
- */
-
-/**
- * Right - BICEP Test
- * (Right): simpleUsage()
- * (Boundary):
- * (Conformance): conformanceTest()
- * (Order): absent
- * (Range): absent
- * (Reference): absent
- * (Existence): existenceTest()
- * (Cardinality): absent
- * (Time): absent
- * (Inverse): absent
- * (Cross-check): absent
- * (Error): checkPrivateMethodOfPrintWithException()
- * (Performance): absent
- */
+import org.junit.After;
 
 public class AppTest {
     App app;
